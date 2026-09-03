@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#202020" />
+    <meta
+      name="description"
+      content="Fast Energy — energieoplossingen die werken."
+    />
+    <title>Fast Energy</title>
+
+    <script>
+      (() => {
+        try {
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.documentElement.classList.add("fe-intro-skip");
+          }
+        } catch {
+          // De normale initialisatie handelt reduced-motion af.
+        }
+      })();
+    </script>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- GSAP wordt via CDN gebruikt voor de intro-animatie. -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"
+      defer
+    ></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body class="fe-intro-active">
+    <div class="fe-intro" data-fe-intro aria-hidden="true">
+      <div class="fe-intro__panel fe-intro__panel--left"></div>
+      <div class="fe-intro__panel fe-intro__panel--right"></div>
+
+      <div class="fe-intro__stage">
+        <div class="fe-intro__circuit" aria-hidden="true">
+          <div class="fe-intro__circuit-side fe-intro__circuit-side--left" data-circuit-side>
+            <span class="fe-intro__segment fe-intro__segment--left-1" data-circuit-segment data-axis="x"></span>
+            <span class="fe-intro__segment fe-intro__segment--left-2" data-circuit-segment data-axis="y"></span>
+            <span class="fe-intro__segment fe-intro__segment--left-3" data-circuit-segment data-axis="x"></span>
+            <span class="fe-intro__segment fe-intro__segment--left-4" data-circuit-segment data-axis="y"></span>
+            <span class="fe-intro__segment fe-intro__segment--left-5" data-circuit-segment data-axis="x"></span>
+          </div>
+          <div class="fe-intro__circuit-side fe-intro__circuit-side--right" data-circuit-side>
+            <span class="fe-intro__segment fe-intro__segment--right-1" data-circuit-segment data-axis="x"></span>
+            <span class="fe-intro__segment fe-intro__segment--right-2" data-circuit-segment data-axis="y"></span>
+            <span class="fe-intro__segment fe-intro__segment--right-3" data-circuit-segment data-axis="x"></span>
+            <span class="fe-intro__segment fe-intro__segment--right-4" data-circuit-segment data-axis="y"></span>
+            <span class="fe-intro__segment fe-intro__segment--right-5" data-circuit-segment data-axis="x"></span>
+          </div>
+          <span class="fe-intro__circuit-core" data-circuit-core></span>
+        </div>
+      </div>
+    </div>
+
+    <main id="app" aria-label="Fast Energy">
+      <section class="fe-hero" id="hero" aria-labelledby="hero-title">
+        <div class="fe-hero__inner">
+          <header class="fe-header" data-header>
+            <div class="fe-header__inner">
+              <a class="fe-brand" href="#hero" aria-label="Fast Energy home">
+                <img
+                  class="fe-brand__mark"
+                  src="./images/logo/logo.png"
+                  alt=""
+                  width="1261"
+                  height="1247"
+                />
+                <span class="fe-brand__name">FAST<br />ENERGY</span>
+              </a>
+
+              <nav class="fe-nav" aria-label="Hoofdnavigatie">
+                <a class="energy-link" href="#diensten">Diensten</a>
+                <a class="energy-link" href="#realisaties">Realisaties</a>
+                <a class="energy-link" href="#over-ons">Over ons</a>
+                <a class="energy-link" href="#faq">FAQ</a>
+                <a class="energy-link" href="#contact">Contact</a>
+              </nav>
+
+              <div class="fe-header__actions">
+                <a class="fe-header__call energy-link" href="#bel-ons">Bel ons</a>
+                <a class="fe-header__quote energy-hover" href="#offerte">
+                  Offerte aanvragen
+                </a>
+              </div>
+
+              <button
+                class="fe-menu-button"
+                type="button"
+                aria-label="Menu openen"
+                aria-expanded="false"
+              >
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </header>
+
+          <div class="fe-hero__content">
+            <div class="fe-hero__copy">
+              <div class="fe-hero__intro">
+                <p class="fe-hero__eyebrow">
+                  ELEKTRICITEITSWERKEN VOOR PARTICULIEREN EN BEDRIJVEN
+                </p>
+                <p class="fe-hero__location">MECHELEN <span>·</span> HEEL BELGIË</p>
+              </div>
+
+              <h1 class="fe-hero__title" id="hero-title">
+                <span>POWER</span>
+                <span class="fe-hero__title-outline">DONE</span>
+                <span class="fe-hero__title-right"
+                  >RIGHT<span class="fe-hero__period">.</span></span
+                >
+              </h1>
+
+              <p class="fe-hero__description">
+                Elektriciteitswerken, keuringen en slimme energieoplossingen.<br
+                  class="fe-hero__description-break"
+                />
+                Voor particulieren en bedrijven in Mechelen en heel België.
+              </p>
+
+              <div class="fe-hero__actions">
+                <a class="fe-button fe-button--primary energy-hover" href="#offerte">
+                  Offerte aanvragen
+                </a>
+                <a class="fe-button fe-button--secondary energy-hover" href="#bel-ons">
+                  Bel ons
+                </a>
+              </div>
+            </div>
+
+            <div class="fe-hero__visual-wrap">
+              <figure class="fe-hero__visual">
+                <img
+                  src="./images/logo/fast-energy-hero-v2.png"
+                  alt="Technische visual van een woning met zonnepanelen, batterij en laadpunt"
+                  width="1672"
+                  height="941"
+                />
+                <figcaption>POWERING EVERYDAY SYSTEMS / 01</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="fe-services"
+        id="diensten"
+        data-services
+        aria-labelledby="services-title"
+      >
+        <div class="fe-services__inner">
+          <div class="fe-services__copy">
+            <h2 id="services-title">
+              ELEKTRICITEIT<br />
+              DIE WERKT.
+            </h2>
+            <p>
+              Van installatie en verlichting tot keuringen en slim
+              energiebeheer.
+            </p>
+          </div>
+
+          <div class="fe-services__lower">
+            <ul class="fe-services__list" aria-label="Onze diensten">
+              <li class="fe-service-item">
+                <button
+                class="fe-service-link energy-row is-active"
+                type="button"
+                data-service-trigger
+                data-service-name="Elektrische installaties"
+                data-service-description="Veilige installaties voor woningen en bedrijven."
+                data-service-image="./images/logo/V1-fast-energy-elektriciteitskast-afgewerkt.png"
+                data-service-alt="Afgewerkte elektrische verdeelkast"
+              >
+                <span>Elektrische installaties</span>
+              </button>
+              </li>
+              <li class="fe-service-item">
+                <button
+                class="fe-service-link energy-row"
+                type="button"
+                data-service-trigger
+                data-service-name="Verlichting"
+                data-service-description="Energiezuinige verlichting voor binnen en buiten."
+                data-service-image="./images/logo/V1-fast-energy-elektriciteitskast-voorbereiding.png"
+                data-service-alt="Elektrische installatie in voorbereiding"
+              >
+                <span>Verlichting</span>
+              </button>
+              </li>
+              <li class="fe-service-item">
+                <button
+                class="fe-service-link energy-row"
+                type="button"
+                data-service-trigger
+                data-service-name="Keuringen &amp; conformiteit"
+                data-service-description="Installaties gecontroleerd, veilig en conform."
+                data-service-image="./images/logo/V1-fast-energy-omvormers-thuisbatterij-installatie.png"
+                data-service-alt="Technische energie-installatie met omvormers"
+              >
+                <span>Keuringen &amp; conformiteit</span>
+              </button>
+              </li>
+              <li class="fe-service-item">
+                <button
+                class="fe-service-link energy-row"
+                type="button"
+                data-service-trigger
+                data-service-name="Thuisbatterijen &amp; energiebeheer"
+                data-service-description="Slim energie opslaan en efficiënter verbruiken."
+                data-service-image="./images/logo/V1-fast-energy-thuisbatterij-solis-pylontech.png"
+                data-service-alt="Thuisbatterij en omvormer installatie"
+              >
+                <span>Thuisbatterijen &amp; energiebeheer</span>
+              </button>
+              </li>
+            </ul>
+
+            <figure class="fe-services__visual">
+              <div class="fe-services__image-frame">
+                <img
+                  class="fe-services__image fe-services__image--current"
+                  data-service-current
+                  src="./images/logo/V1-fast-energy-elektriciteitskast-afgewerkt.png"
+                  alt="Afgewerkte elektrische verdeelkast"
+                  width="1080"
+                  height="1440"
+                />
+                <img
+                  class="fe-services__image fe-services__image--next"
+                  data-service-next
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span class="fe-services__image-mark" aria-hidden="true"></span>
+              </div>
+              <figcaption class="fe-services__image-info" aria-live="polite">
+                <strong data-service-current-name>Elektrische installaties</strong>
+                <span data-service-description>
+                  Veilige en betrouwbare installaties voor woningen en
+                  bedrijven.
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="fe-projects"
+        id="realisaties"
+        aria-labelledby="projects-title"
+      >
+        <div class="fe-projects__inner">
+          <div class="fe-projects__intro">
+            <h2 id="projects-title">
+              WERK DAT<br />
+              VOOR ZICH<br />
+              SPREEKT.
+            </h2>
+            <p>
+              Echte installaties, uitgevoerd met aandacht voor veiligheid,
+              afwerking en betrouwbaarheid.
+            </p>
+          </div>
+
+          <div class="fe-projects__collage">
+            <article class="fe-project fe-project--main">
+              <div class="fe-project__media">
+                <img
+                  src="./images/logo/V1-fast-energy-elektriciteitskast-afgewerkt.png"
+                  alt="Afgewerkte elektrische verdeelkast"
+                  width="1080"
+                  height="1440"
+                  loading="lazy"
+                />
+              </div>
+              <div class="fe-project__caption">
+                <span>Verdeelkast</span>
+              </div>
+            </article>
+
+            <article class="fe-project fe-project--small fe-project--small-one">
+              <div class="fe-project__media">
+                <img
+                  src="./images/logo/V1-fast-energy-omvormers-thuisbatterij-installatie.png"
+                  alt="Omvormers en technische energie-installatie"
+                  width="1080"
+                  height="1440"
+                  loading="lazy"
+                />
+              </div>
+              <div class="fe-project__caption">
+                <span>Batterij-integratie</span>
+              </div>
+            </article>
+
+            <article class="fe-project fe-project--offset">
+              <div class="fe-project__media">
+                <img
+                  src="./images/logo/V1-fast-energy-thuisbatterij-solis-pylontech.png"
+                  alt="Solis en Pylontech thuisbatterij-installatie"
+                  width="1080"
+                  height="1440"
+                  loading="lazy"
+                />
+              </div>
+              <div class="fe-project__caption">
+                <span>Energieopslag</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="fe-why"
+        id="waarom-fast-energy"
+        data-why
+        aria-labelledby="why-title"
+      >
+        <div class="fe-why__inner">
+          <div class="fe-why__intro">
+            <h2 id="why-title">
+              WAAROM KLANTEN<br />
+              VOOR FAST ENERGY<br />
+              KIEZEN
+            </h2>
+            <p>
+              Duidelijke afspraken en een nette uitvoering, van begin tot
+              einde.
+            </p>
+          </div>
+
+          <ul class="fe-why__list" aria-label="Waarom Fast Energy">
+            <li class="fe-why__item">
+              <div class="fe-why__trigger is-active">
+                <span>Duidelijke afspraken</span>
+                <small class="fe-why__support">
+                  Prijs, planning en uitvoering spreken we vooraf af.
+                </small>
+              </div>
+            </li>
+            <li class="fe-why__item">
+              <div class="fe-why__trigger">
+                <span>Nette afwerking</span>
+                <small class="fe-why__support">
+                  We leveren het werk verzorgd en netjes op.
+                </small>
+              </div>
+            </li>
+            <li class="fe-why__item">
+              <div class="fe-why__trigger">
+                <span>Snel bereikbaar</span>
+                <small class="fe-why__support">
+                  U krijgt snel antwoord wanneer u ons nodig hebt.
+                </small>
+              </div>
+            </li>
+            <li class="fe-why__item">
+              <div class="fe-why__trigger">
+                <span>Advies op maat</span>
+                <small class="fe-why__support">
+                  We bekijken wat past bij uw woning of bedrijf.
+                </small>
+              </div>
+            </li>
+            <li class="fe-why__item">
+              <div class="fe-why__trigger">
+                <span>Voor woningen en bedrijven</span>
+                <small class="fe-why__support">
+                  Van een kleine aanpassing tot een volledige installatie.
+                </small>
+              </div>
+            </li>
+            <li class="fe-why__item">
+              <div class="fe-why__trigger">
+                <span>Veilig uitgevoerd</span>
+                <small class="fe-why__support">
+                  We werken veilig en volgens de geldende voorschriften.
+                </small>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="fe-contact" id="contact" aria-labelledby="contact-title">
+        <div class="fe-contact__inner">
+          <div class="fe-contact__intro">
+            <h2 id="contact-title">Een project in gedachten?</h2>
+            <p>
+              Stuur kort door wat er moet gebeuren. We bekijken de situatie en
+              nemen contact met je op.
+            </p>
+
+            <dl class="fe-contact__details">
+              <div class="fe-contact__detail" id="bel-ons">
+                <dt>Telefoon</dt>
+                <dd>Bel ons</dd>
+              </div>
+              <div class="fe-contact__detail">
+                <dt>E-mail</dt>
+                <dd>Contact</dd>
+              </div>
+              <div class="fe-contact__detail">
+                <dt>Regio</dt>
+                <dd>Mechelen · heel België</dd>
+              </div>
+            </dl>
+          </div>
+
+          <form class="fe-contact__form" data-contact-form>
+            <div class="fe-contact__field">
+              <label for="contact-name">Naam</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" />
+            </div>
+            <div class="fe-contact__field">
+              <label for="contact-email">E-mail</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" />
+            </div>
+            <div class="fe-contact__field">
+              <label for="contact-phone">Telefoon</label>
+              <input id="contact-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="fe-contact__field">
+              <label for="contact-type">Type aanvraag</label>
+              <select id="contact-type" name="request-type">
+                <option value="">Kies een type</option>
+                <option>Elektrische installatie</option>
+                <option>Verlichting</option>
+                <option>Keuring</option>
+                <option>Thuisbatterij / energiebeheer</option>
+                <option>Andere</option>
+              </select>
+            </div>
+            <div class="fe-contact__field fe-contact__field--wide">
+              <label for="contact-message">Bericht</label>
+              <textarea id="contact-message" name="message" rows="4"></textarea>
+            </div>
+            <button class="fe-button fe-button--primary energy-hover" type="submit">
+              Offerte aanvragen
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section
+        class="fe-calculator"
+        id="offerte"
+        aria-labelledby="calculator-title"
+      >
+        <div class="fe-calculator__inner">
+          <div class="fe-calculator__layout">
+            <div class="fe-calculator__intro">
+              <h2 id="calculator-title">
+                BEREKEN WAT<br />
+                SLIMMER ENERGIEGEBRUIK<br />
+                KAN OPLEVEREN.
+              </h2>
+              <p>
+                Stel uw verbruik in voor een indicatie van uw besparing.
+              </p>
+
+              <form class="fe-calculator__form" data-calculator-form>
+                <div class="fe-calc-field">
+                  <div class="fe-calc-field__heading">
+                    <label for="calc-consumption">Jaarlijks elektriciteitsverbruik</label>
+                    <output data-calc-consumption-output for="calc-consumption">
+                      4.500 kWh
+                    </output>
+                  </div>
+                  <input
+                    class="fe-calc-range"
+                    id="calc-consumption"
+                    name="consumption"
+                    type="range"
+                    min="2000"
+                    max="12000"
+                    step="100"
+                    value="4500"
+                    data-calc-input="consumption"
+                  />
+                  <div class="fe-calc-range__limits" aria-hidden="true">
+                    <span>2.000 kWh</span>
+                    <span>12.000 kWh</span>
+                  </div>
+                </div>
+
+                <div class="fe-calc-field">
+                  <div class="fe-calc-field__heading">
+                    <label for="calc-cost">Jaarlijkse energiekost</label>
+                    <output data-calc-cost-output for="calc-cost">€ 1.500</output>
+                  </div>
+                  <input
+                    class="fe-calc-range"
+                    id="calc-cost"
+                    name="cost"
+                    type="range"
+                    min="500"
+                    max="5000"
+                    step="50"
+                    value="1500"
+                    data-calc-input="cost"
+                  />
+                  <div class="fe-calc-range__limits" aria-hidden="true">
+                    <span>€ 500</span>
+                    <span>€ 5.000</span>
+                  </div>
+                </div>
+
+                <fieldset class="fe-calc-field fe-calc-field--battery">
+                  <legend>Thuisbatterij</legend>
+                  <div class="fe-calc-options" role="group" aria-label="Thuisbatterij">
+                    <button
+                      class="fe-calc-option fe-button fe-button--primary energy-hover is-selected"
+                      type="button"
+                      aria-pressed="true"
+                      data-battery-option="true"
+                    >
+                      Met batterij
+                    </button>
+                    <button
+                      class="fe-calc-option fe-button fe-button--secondary energy-hover"
+                      type="button"
+                      aria-pressed="false"
+                      data-battery-option="false"
+                    >
+                      Zonder batterij
+                    </button>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+            <div class="fe-calculator__result" data-calculator-result>
+              <div class="fe-calculator__result-heading">
+                <span>GESCHATTE JAARLIJKSE BESPARING</span>
+                <output data-calc-savings aria-live="polite">€ 0</output>
+              </div>
+
+              <div
+                class="fe-calc-comparison"
+                aria-label="Vergelijking van de huidige kost met energieoptimalisatie"
+              >
+                <div class="fe-calc-comparison__item">
+                  <div class="fe-calc-meter__heading">
+                    <span>Huidige kost</span>
+                    <strong data-calc-current-cost>€ 1.500</strong>
+                  </div>
+                  <div class="fe-calc-meter" aria-hidden="true">
+                    <span class="fe-calc-meter__track"></span>
+                    <span class="fe-calc-meter__fill fe-calc-meter__fill--current"></span>
+                    <span class="fe-calc-meter__ticks"></span>
+                  </div>
+                </div>
+                <div class="fe-calc-comparison__item fe-calc-comparison__item--optimized">
+                  <div class="fe-calc-meter__heading">
+                    <span>Met energieoptimalisatie</span>
+                    <strong data-calc-optimized-cost>€ 1.500</strong>
+                  </div>
+                  <div class="fe-calc-meter" aria-hidden="true">
+                    <span class="fe-calc-meter__track"></span>
+                    <span class="fe-calc-meter__fill fe-calc-meter__fill--optimized"></span>
+                    <span class="fe-calc-meter__ticks"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fe-calc-metrics">
+                <div class="fe-calc-metric">
+                  <span>Geschatte terugverdientijd</span>
+                  <strong data-calc-payback>—</strong>
+                </div>
+              </div>
+
+              <a
+                class="fe-calc-cta fe-button fe-button--primary energy-hover"
+                href="#offerte"
+              >
+                Vraag een exacte berekening aan <span aria-hidden="true">→</span>
+              </a>
+
+              <p class="fe-calc-disclaimer">
+                Deze berekening is indicatief. De werkelijke besparing hangt af
+                van verbruik, installatie, energietarief en situatie ter plaatse.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="fe-footer" aria-label="Footer">
+      <div class="fe-footer__inner">
+        <div class="fe-footer__main">
+          <div class="fe-footer__brand">
+            <a class="fe-footer__brand-link" href="#hero" aria-label="Fast Energy home">
+              <img
+                src="./images/logo/logo.png"
+                alt=""
+                width="1261"
+                height="1247"
+              />
+              <span>FAST<br />ENERGY</span>
+            </a>
+            <p>Elektriciteitswerken voor particulieren en bedrijven.</p>
+            <p class="fe-footer__region">Mechelen · heel België</p>
+          </div>
+
+          <nav class="fe-footer__nav" aria-label="Footer navigatie">
+            <span class="fe-footer__label">Navigatie</span>
+            <a class="energy-link" href="#diensten">Diensten</a>
+            <a class="energy-link" href="#realisaties">Realisaties</a>
+            <a class="energy-link" href="#waarom-fast-energy">Waarom Fast Energy</a>
+            <a class="energy-link" href="#contact">Contact</a>
+          </nav>
+
+          <div class="fe-footer__contact">
+            <span class="fe-footer__label">Contact</span>
+            <span class="fe-footer__contact-line">
+              <small>Telefoon</small>
+              <a class="energy-link" href="#bel-ons">Bel ons</a>
+            </span>
+            <span class="fe-footer__contact-line">
+              <small>E-mail</small>
+              <a class="energy-link" href="#contact">Contact</a>
+            </span>
+            <a class="fe-footer__quote energy-hover" href="#offerte">
+              Offerte aanvragen <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="fe-footer__bottom">
+          <span>© 2026 Fast Energy</span>
+          <div class="fe-footer__legal">
+            <a class="energy-link" href="#privacy">Privacy</a>
+          </div>
+          <a
+            class="fe-footer__credit energy-link"
+            href="https://bmastudio.be/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Website by BMA Studio
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
