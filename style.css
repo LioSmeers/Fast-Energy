@@ -1178,9 +1178,8 @@ main {
 
 .fe-projects__collage {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.62fr) minmax(0, 0.62fr);
-  grid-template-rows: auto auto;
-  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
   align-items: start;
 }
 
@@ -1189,21 +1188,20 @@ main {
 }
 
 .fe-project--main {
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
+  grid-column: auto;
+  grid-row: auto;
 }
 
 .fe-project--small-one {
-  grid-column: 3;
-  grid-row: 1;
+  grid-column: auto;
+  grid-row: auto;
 }
 
 .fe-project--offset {
-  grid-column: 3;
-  grid-row: 2;
-  width: calc(100% + clamp(0rem, 4vw, 4rem));
-  margin-top: 0;
-  margin-left: 0;
+  grid-column: auto;
+  grid-row: auto;
+  width: 100%;
+  margin: 0;
 }
 
 .fe-project__media {
@@ -1352,10 +1350,10 @@ main {
   }
 
   .fe-projects__collage {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     width: 100%;
-    gap: clamp(2rem, 6vw, 3rem);
+    gap: 24px;
   }
 
   .fe-project,
@@ -1364,6 +1362,13 @@ main {
     max-width: 34rem;
     margin: 0;
     align-self: center;
+  }
+
+  .fe-project--main,
+  .fe-project--small-one,
+  .fe-project--offset {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .fe-project--main .fe-project__media,
