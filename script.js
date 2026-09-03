@@ -287,26 +287,27 @@
     Math.min(Math.max(value, minimum), maximum);
 
   /*
-   * Indicatieve demo-formule. Vervang deze functie later door echte
-   * berekeningen op basis van tarief, installatie en meetgegevens.
+   * Indicatieve formule. De jaarlijkse energiekost is de basis van de
+   * berekening; verbruik wordt gebruikt als veilige fallback wanneer er geen
+   * kostwaarde beschikbaar is.
    */
   const calculateIndicativeEstimate = ({ consumption, cost, hasBattery }) => {
-    const usageFactor = clamp((consumption - 2000) / 10000, 0, 1);
-    const costFactor = clamp((cost - 500) / 4500, 0, 1);
-    const baseEfficiency = 0.08 + usageFactor * 0.07 + costFactor * 0.05;
-    const batteryEfficiency = hasBattery ? 0.08 : 0.025;
-    const savingsRate = clamp(baseEfficiency + batteryEfficiency, 0.1, 0.3);
-    const savings = Math.max(50, Math.round((cost * savingsRate) / 10) * 10);
-    const optimizedCost = Math.max(cost - savings, 0);
-    const estimatedInvestment = hasBattery
-      ? 4200 + consumption * 0.12
-      : 1800 + consumption * 0.04;
-    const payback = estimatedInvestment / savings;
+    const annualCost = Number.isFinite(cost) && cost > 0
+      ? cost
+      : Math.max(consumption * 0.33, 0);
+    const savingsRate = hasBattery ? 0.25 : 0.15;
+    const savings = Math.round(annualCost * savingsRate);
+    const optimizedCost = Math.max(annualCost - savings, 0);
+    const installationCost = hasBattery ? 8000 : 3500;
+    const payback = savings > 0 ? installationCost / savings : 0;
+
     return {
       savings,
       optimizedCost,
       payback,
-      optimizedBarScale: clamp(optimizedCost / cost, 0.2, 1),
+      optimizedBarScale: annualCost > 0
+        ? clamp(optimizedCost / annualCost, 0.2, 1)
+        : 0,
     };
   };
 
@@ -407,7 +408,9 @@
 
   form.addEventListener("submit", (event) => event.preventDefault());
   consumptionInput.addEventListener("input", () => updateCalculator());
+  consumptionInput.addEventListener("change", () => updateCalculator());
   costInput.addEventListener("input", () => updateCalculator());
+  costInput.addEventListener("change", () => updateCalculator());
   batteryOptions.forEach((option) => {
     option.addEventListener("click", () => selectBattery(option));
   });
