@@ -153,8 +153,7 @@ main {
 .fe-brand__name,
 .fe-header__label,
 .fe-hero__eyebrow,
-.fe-hero__location,
-.fe-hero__visual figcaption {
+.fe-hero__location {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 600;
@@ -496,15 +495,6 @@ main {
   object-fit: contain;
   object-position: center;
   background: #000;
-}
-
-.fe-hero__visual figcaption {
-  position: absolute;
-  z-index: 3;
-  right: clamp(1rem, 5vw, 5.5rem);
-  bottom: 1rem;
-  margin: 0;
-  color: rgba(244, 241, 235, 0.42);
 }
 
 @media (max-width: 900px) {
